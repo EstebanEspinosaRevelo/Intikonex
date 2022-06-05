@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Intikonex_web1.Models.trabajador>
+
+@using Intikonex_web1.Models
+@{
+    ViewBag.Title = "Trabajadores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+<h1 style="text-align:center">LISTADO DE TRABAJADORES</h1>
+<hr />
+<div style="color:red;">
+    @ViewBag.Error
+</div>
+<a class="btn-material" style="width:220px" href="/trabajador/Create_user">
+    <img class="icon" src="~/Image/Iconos/Acciones/Boton_Crear.png" />
+    <img src="~/Image/Iconos/Menu/icon-laboral.png" />
+    Nuevo trabajador
+</a>
+<table class="Listado">
+    <tr>
+        <th>
+            <label>Nombre</label>
+        </th>
+        <th>
+            <label>Apellidos</label>
+        </th>
+        <th>
+            <label>Cargo</label>
+        </th>
+        <th>
+            <label>Correo electrónico</label>
+        </th>
+        <th>
+            <label>Empresa</label>
+        </th>
+        <th>
+            <label>Editar</label>
+        </th>
+        <th>
+            <label>Detalles</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empresa1.razon_social)
+            </td>
+            <td>
+                @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_editar.png"), "", "Edit_user", new { id = item.id }, new { @class = "icon" })
+            </td>
+            <td>
+                @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_detalles.png"), "", "Details_user", new { id = item.id }, new { @class = "icon" })
+            </td>
+        </tr>
+    }
+
+</table>

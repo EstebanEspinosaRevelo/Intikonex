@@ -1,0 +1,52 @@
+﻿@model Intikonex_web1.Models.contrato
+
+@{
+    ViewBag.Title = "Contrato - Eliminar";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+<div>
+    <h1 style="background-color:darkred; font-size:200%">¿Estás seguro de que quieres eliminar este contrato?</h1>
+    <hr />
+    <table class="Listado">
+        <tr>
+            <th>
+                <label>Nombre</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label>Descripción</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.Descripción)
+            </td>
+        </tr>
+    </table>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>
+                <a class="btn-material" style="width:100%" href="/Contrato/Index">
+                    <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+                </a>
+            </td>
+            <td>
+                <button class="btn-material" style="width: 100%; border-style: hidden; cursor: pointer; background-color:white" type="submit" value="Delete">
+                    <img class="icon" style="width:50px; height:50%" src="~/Image/Iconos/Acciones/Boton_eliminar.png">
+                </button>
+            </td>
+        </tr>
+    </table>
+
+}

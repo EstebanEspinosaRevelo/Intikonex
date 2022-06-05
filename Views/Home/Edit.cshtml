@@ -1,0 +1,94 @@
+﻿@model Intikonex_web1.Models.empresa
+@using Intikonex_web1.Models
+
+@{
+    ViewBag.Title = "Empresas - Editar";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 style="text-align:center">EDICIÓN DE LA EMPRESA</h1>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+<table border="0" class="Listado">
+    <tr>
+        <th style="border-style: inset"><label>Nombre de la empresa*</label></th>
+        <th style="border-style: inset"><label>CIF*</label></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.EditorFor(model => model.razon_social, new { htmlAttributes = new { @class = "form-control", placeholder = "Empresa", required = "", style = "width:50%;background-color: cornsilk" } })
+            @Html.ValidationMessageFor(model => model.razon_social, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.EditorFor(model => model.cif, new { htmlAttributes = new { @class = "form-control", placeholder = "B76365789", pattern = "[BbCcDdEeFfGgHhJjNnPpQqRrSsUuVvWw0-9]{9}", required = "", title = "El numero CIF consta de 9 caracteres", style = "width:50%;background-color: cornsilk" } })
+            @Html.ValidationMessageFor(model => model.cif, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="width:60px; height:60px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+    <tr>
+        <th style="border-style: inset"><label>Dirección*</label></th>
+        <th style="border-style: inset"><label>Teléfono</label></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "C/ direccion ", style = "width:50% ;background-color: cornsilk" } })
+            @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.telefono, new { @type = "phone", placeholder = "123456789", pattern = "[0-9]{9}", title = "El numero de telefono consta de 9 números", style = "width:50%;background-color: cornsilk" })
+            @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="width:60px; height:60px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+    <tr>
+        <th style="border-style: inset"><label>Correo Electrónico</label></th>
+        <th style="border-style: inset"><label>Contrato</label></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(model => model.correo, new { @type = "email", placeholder = "correo@dominio.com", style = "width:50% ;background-color: cornsilk"})
+            @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.DropDownList("id_contrato", null, htmlAttributes: new { @class = "form-control"})
+            @Html.ValidationMessageFor(model => model.id_contrato, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="width:60px; height:60px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+    <tr>
+        <th style="border-style: inset"><label>Persona de Contacto</label></th>
+        <th style="border-style: inset"><label>Técnico Asignado</label></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DropDownList("id_trabajador", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.id_trabajador, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.DropDownList("id_usuario", null, htmlAttributes: new { })
+            @Html.ValidationMessageFor(model => model.id_usuario, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+</table>
+    <table>
+        <tr>
+            <td>
+                <a class="btn-material" style="width:100%" href="/Home/Index">
+                    <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+                </a>
+            </td>
+            <td>
+                <button class="btn-material" style="width: 100%; border-style: hidden; cursor: pointer; background-color:white" type="submit">
+                    <img class="icon" style="width:50px; height:50%" src="~/Image/Iconos/Acciones/Boton_guardar.png">
+                </button>
+            </td>
+        </tr>
+    </table>
+}
+

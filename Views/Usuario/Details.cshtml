@@ -1,0 +1,114 @@
+﻿@model Intikonex_web1.Models.usuario
+
+@using Intikonex_web1.Models
+@{
+    ViewBag.Title = "Usuarios - Detalles";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+<div>
+    <h1 style="text-align:center">DETALLES DEL USUARIO</h1>
+    <hr />
+    <table class="Listado">
+        <tr>
+            <th>
+                <label>Nombre</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.nombre)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Apellidos</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.apellidos)
+            </td>
+
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Correo Electrónico</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.correo)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Documento de Identidad</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.dni_nie_nif)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Teléfono</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.telefono)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Dirección</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.direccion)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Permisos</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.rol.nombre)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Fecha de alta</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.fecha_alta)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+    </table>
+</div>
+<table>
+    <tr>
+        <td>
+            <a class="btn-material" style="width:100%" href="/Usuario/Index">
+                <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+            </a>
+        </td>
+        <td><p></p></td>
+        <td>
+            @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_editar.png"), "", "Edit", new { id = Model.id }, new { @class = "icon", style = "width:50px; height:20%" })
+        </td>
+        <td><p></p></td>
+        <td>
+            @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_eliminar.png"), "", "Delete", new { id = Model.id }, new { @class = "icon", style = "width:50px; height:20%" })
+        </td>
+    </tr>
+</table>

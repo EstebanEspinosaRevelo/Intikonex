@@ -1,0 +1,118 @@
+﻿@model Intikonex_web1.Models.Hoja_de_asistencia
+@using Intikonex_web1.Models
+
+@{
+    ViewBag.Title = "Hoja de asistencia - Crear";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 style="text-align:center">CREACIÓN DE UNA NUEVA HOJA DE ASISTENCIA</h1>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <br />
+
+    <div style="text-align:center">
+        <div class="form-group">
+            <h4>Empresa</h4>
+            <div class="col-md-10">
+                @Html.DropDownList("id_empresa", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_empresa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <h4>Técnico Asignado</h4>
+            <div class="col-md-10">
+                @Html.DropDownList("id_usuario", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_usuario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <h4>Fecha de asistencia*</h4>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.fecha_asistencia, new { @type = "date", @class = "form-control", required = "", style = "width:10% ;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.fecha_asistencia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <h4>Hora de Llegada*</h4>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.hora_inicio, new { @type = "time", @class = "form-control", required = "", style = "width:5% ;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.hora_inicio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <h4>Hora de Salida*</h4>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.hora_fin, new { @type = "time", @class = "form-control", required = "", style = "width:5% ;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.hora_fin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <h4>Tipo de contrato</h4>
+            <div class="col-md-10">
+                @Html.DropDownList("id_contrato", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_contrato, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <h4>Trabajo realizado*</h4>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.trabajo_realizado, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Introduzca aqui el trabajo realizado", style = "width:100%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.trabajo_realizado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <h4>Observaciones del cliente*</h4>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.observaciones_cliente, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca aqui las observaciones del cliente", style = "width:100%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.observaciones_cliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <h4>Persona de contacto*</h4>
+            <div class="col-md-10">
+                @Html.DropDownList("id_trabajador", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_trabajador, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <table>
+        <tr>
+            <td>
+                <a class="btn-material" style="width:100%" href="/Hoja_de_asistencia/Index">
+                    <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+                </a>
+            </td>
+            <td>
+                <button class="btn-material" style="width: 100%; border-style: hidden; cursor: pointer; background-color:white" type="submit" value="Create">
+                    <img class="icon" style="width:50px; height:50%" src="~/Image/Iconos/Acciones/Boton_Crear.png">
+                </button>
+            </td>
+        </tr>
+    </table>
+
+}

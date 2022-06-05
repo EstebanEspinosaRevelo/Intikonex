@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Intikonex_web1.Models.contrato>
+
+
+@using Intikonex_web1.Models
+@{
+    ViewBag.Title = "Contrato";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+<h1 style="text-align:center">LISTADO DE CONTRATOS</h1>
+<hr />
+<div style="color:red;">
+    @ViewBag.Error
+</div>
+<a class="btn-material" href="/Contrato/Create">
+    <img class="icon" src="~/Image/Iconos/Acciones/Boton_Crear.png" />
+    <img src="~/Image/Iconos/Menu/icon-contrato.png" />
+    Crear Contrato
+</a>
+<table class="Listado">
+    <tr>
+        <th>
+            <label>Nombre</label>
+        </th>
+        <th>
+            <label>Descripción</label>
+        </th>
+        <th>
+            <label>Editar </label>
+        </th>
+        <th>
+            <label>Eliminar</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripción)
+            </td>
+            <td>
+                @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_editar.png"), "", "Edit", new { id = item.id }, new { @class = "icon" })
+            </td>
+            <td>
+                @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_eliminar.png"), "", "Delete", new { id = item.id }, new { @class = "icon" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,40 @@
+﻿@model Intikonex_web1.Models.RecoveryPasswordViewModel
+@{
+    ViewBag.Title = "Restablecer Contraseña";
+    Layout = "~/Views/Shared/_Layout_login.cshtml";
+}
+
+<div class="box">
+    <div class="box-form" style="left: 0px;">
+        <div class="box-login-tab"></div>
+        <div class="box-login-title">
+            <div class="i i-login"></div>
+            <h4>Recuperar Contraseña</h4>
+        </div>
+        <form action="@Url.Content("~/Acceso/Recovery")" method="post">
+            <div class="box-login">
+                <br />
+                <div class="fieldset-body" id="login_form">
+                        @Html.HiddenFor(d => d.token)
+                    <p class="field">
+                        <label for="user">Escribe tu nueva contraseña</label>
+                        @Html.PasswordFor(d => d.Password, new { type = "password", name = "Pass", placeholder = "Introduzca la contraseña", required = "", pattern = "[A-Za-z0-9#$%&_*.]{5,100}", title = "Debe tener mínimo 5 caracteres. Se recomienda utilizar minúsculas, mayúsculas, números y símbolos (#, $, %, &)" })
+                        @Html.ValidationMessageFor(d => d.Password, null, new { @style = "color:red;" })
+                    </p>  
+                    <p class="field">
+                        <label for="user">Vuelve a escribir la contraseña</label>
+                        @Html.PasswordFor(d => d.Password2, new { type = "password", name = "Pass", placeholder = "Repite la contraseña", required = "", pattern = "[A-Za-z0-9#$%&_*.]{5,100}", title = "Debe tener mínimo 5 caracteres. Se recomienda utilizar minúsculas, mayúsculas, números y símbolos (#, $, %, &)" })
+                        @Html.ValidationMessageFor(d => d.Password2, null, new { @style = "color:red;" })
+                    </p>
+                    <div class="danger">
+                        @ViewBag.Error
+                    </div>
+                    <div class="alert-success">
+                        @ViewBag.Success
+                    </div>
+                    <input type="submit" value="Recuperar" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

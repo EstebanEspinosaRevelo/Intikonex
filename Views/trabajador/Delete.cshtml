@@ -1,0 +1,97 @@
+﻿@model Intikonex_web1.Models.trabajador
+
+@{
+    ViewBag.Title = "Empresa - Eliminar";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+<div>
+    <h1 style="background-color:darkred; font-size:200%">¿Estás seguro de que quieres eliminar este trabajador?</h1>
+    <hr />
+    <table class="Listado">
+        <tr>
+            <th>
+                <label>Nombre</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label>Apellidos</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.apellidos)
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                <label>Cargo</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.cargo)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label>Teléfono</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.telefono)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label>Correo Electrónico</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.correo)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label>Documento de Identidad</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.dni_nie_nif)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label>Empresa</label>
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.empresa1.razon_social)
+            </td>
+        </tr>
+    </table>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>
+                <a class="btn-material" style="width:100%" href="/trabajador/Index">
+                    <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+                </a>
+            </td>
+            <td>
+                <button class="btn-material" style="width: 100%; border-style: hidden; cursor: pointer; background-color:white" type="submit" value="Delete">
+                    <img class="icon" style="width:50px; height:50%" src="~/Image/Iconos/Acciones/Boton_eliminar.png">
+                </button>
+            </td>
+        </tr>
+    </table>
+
+}

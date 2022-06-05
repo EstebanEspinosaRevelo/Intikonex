@@ -1,0 +1,53 @@
+﻿@model Intikonex_web1.Models.contrato
+
+@{
+    ViewBag.Title = "Contrato - Crear";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 style="text-align:center">CREACIÓN DE UN NUEVO CONTRATO</h1>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <br />
+
+    <div style="text-align:center">
+        <div class="form-group">
+            <h4>Nombre*</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Nombre del contrato", style = "width:50%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <h4>Descripción*</h4>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Descripción, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Redacte una breve descripción del contrato", style = "width:50% ;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.Descripción, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <table>
+        <tr>
+            <td>
+                <a class="btn-material" style="width:100%" href="/Contrato/Index">
+                    <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+                </a>
+            </td>
+            <td>
+                <button class="btn-material" style="width: 100%; border-style: hidden; cursor: pointer; background-color:white" type="submit" value="Create">
+                    <img class="icon" style="width:50px; height:50%" src="~/Image/Iconos/Acciones/Boton_Crear.png">
+                </button>
+            </td>
+        </tr>
+    </table>
+}

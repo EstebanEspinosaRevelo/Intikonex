@@ -1,0 +1,94 @@
+﻿@model Intikonex_web1.Models.usuario
+
+@using Intikonex_web1.Models
+
+@{
+    ViewBag.Title = "Usuarios - Editar";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 style="text-align:center">EDICIÓN DEL USUARIO</h1>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+<table border="0" class="Listado">
+    <tr>
+        <th style="border-style: inset"><label>Nombre</label></th>
+        <th style="border-style: inset"><label>Apellidos</label></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre del usuario", style = "width:50%;background-color: cornsilk" } })
+            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.EditorFor(model => model.apellidos, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellidos del usuario", style = "width:50%;background-color: cornsilk" } })
+            @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="width:40px; height:40px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+    <tr>
+        <th style="border-style: inset"><label>Documentación de identidad</label></th>
+        <th style="border-style: inset"><label>Teléfono</label></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.EditorFor(model => model.dni_nie_nif, new { htmlAttributes = new { @class = "form-control", placeholder = "DNI / NIE / NIF ", pattern = "[AaBbCcDdEeFfGgHhJjQqRrSsTtVvWwXxYyZz0-9]{9}", @Value = "A00000000", required = "", title = "La documentacion de identidad consta de 9 caracteres. Por favor, Introduzcalo correctamente", style = "width:50% ;background-color: cornsilk" } })
+            @Html.ValidationMessageFor(model => model.dni_nie_nif, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.telefono, new { @type = "phone", placeholder = "123456789", pattern = "[0-9]{9}", @Value = "000000000", title = "El numero de telefono consta de 9 números", style = "width:50%;background-color: cornsilk" })
+            @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="width:40px; height:40px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+    <tr>
+        <th style="border-style: inset"><label>Correo Electrónico</label></th>
+        <th style="border-style: inset"><label>Dirección</label></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(model => model.correo, new { @type = "email", placeholder = "correo@dominio.com", required = "", pattern = ".+[iI][nN][Tt][iI][kK][oO][nN][eE][xX][.][cC][oO][mM]", style = "width:50% ;background-color: cornsilk" })
+            @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "form-control", placeholder = "C/ direccion", style = "width:50% ;background-color: cornsilk" } })
+            @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="width:40px; height:40px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+    <tr>
+        <th style="border-style: inset"><label>Contraseña</label></th>
+        <th style="border-style: inset"><label>Permisos</label></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.PasswordFor(model => model.password, new { type = "password", name = "Pass", placeholder = "Introduzca la contraseña", required = "", pattern = "[A-Za-z0-9#$%&_*.]{5,100}", title = "Debe tener mínimo 5 caracteres. Se recomienda utilizar minúsculas, mayúsculas, números y símbolos (#, $, %, &)", style = "width:50% ;background-color: cornsilk" })
+            @Html.ValidationMessageFor(model => model.password, null, new { @style = "color:red;" })
+        </td>
+        <td>
+            @Html.DropDownList("id_rol", null, htmlAttributes: new { })
+            @Html.ValidationMessageFor(model => model.id_rol, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+</table>
+    <table>
+        <tr>
+            <td>
+                <a class="btn-material" style="width:100%" href="/Usuario/Index">
+                    <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+                </a>
+            </td>
+            <td>
+                <button class="btn-material" style="width: 100%; border-style: hidden; cursor: pointer; background-color:white" type="submit">
+                    <img class="icon" style="width:50px; height:50%" src="~/Image/Iconos/Acciones/Boton_guardar.png">
+                </button>
+            </td>
+        </tr>
+    </table>
+}

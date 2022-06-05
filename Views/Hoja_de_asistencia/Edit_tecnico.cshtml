@@ -1,0 +1,106 @@
+﻿@model Intikonex_web1.Models.Hoja_de_asistencia
+@using Intikonex_web1.Models
+
+@{
+    ViewBag.Title = "Hoja de asistencia - Editar";
+    Layout = "~/Views/Shared/_Layout_Tecnico.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 style="text-align:center">EDICIÓN DE LA HOJA DE ASISTENCIA</h1>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+    <table border="0" class="Listado">
+        <tr>
+            <th style="border-style: inset"><label>Nombre de la empresa*</label></th>
+            <th style="border-style: inset"><label>Técnico Asignado*</label></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DropDownList("id_empresa", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_empresa, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.DropDownList("id_usuario", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_usuario, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr style="width:60px; height:60px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th style="border-style: inset"><label>Fecha de asistencia*</label></th>
+            <th style="border-style: inset"><label>Contrato*</label></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(model => model.fecha_asistencia, new { @type = "date", @class = "form-control", required = "", style = "width:20% ;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.fecha_asistencia, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.DropDownList("id_contrato", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_contrato, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr style="width:60px; height:60px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th style="border-style: inset"><label>Hora de llegada*</label></th>
+            <th style="border-style: inset"><label>Hora de salida*</label></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(model => model.hora_inicio, new { @type = "time", @class = "form-control", required = "", style = "width:20% ;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.hora_inicio, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.hora_fin, new { @type = "time", @class = "form-control", required = "", style = "width:20% ;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.hora_fin, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr style="width:60px; height:60px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th style="border-style: inset"><label>Persona de Contacto*</label></th>
+            <th style="border-style: inset"><label>Observaciones del cliente</label></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DropDownList("id_trabajador", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_trabajador, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextAreaFor(model => model.observaciones_cliente, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca aqui las observaciones del cliente" } })
+                @Html.ValidationMessageFor(model => model.observaciones_cliente, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table> <tr style="width:60px; height:60px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+
+    <table class="Listado">
+        <tr>
+            <th>
+                <label>Trabajo realizado*</label>
+            </th>
+            <td>
+                @Html.TextAreaFor(model => model.trabajo_realizado, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Introduzca aqui el trabajo realizado" } })
+                @Html.ValidationMessageFor(model => model.trabajo_realizado, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <a class="btn-material" style="width:100%" href="/Hoja_de_asistencia/Index_tecnico">
+                    <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+                </a>
+            </td>
+            <td>
+                <button class="btn-material" style="width: 100%; border-style: hidden; cursor: pointer; background-color:white" type="submit">
+                    <img class="icon" style="width:50px; height:50%" src="~/Image/Iconos/Acciones/Boton_guardar.png">
+                </button>
+            </td>
+        </tr>
+    </table>
+}
+

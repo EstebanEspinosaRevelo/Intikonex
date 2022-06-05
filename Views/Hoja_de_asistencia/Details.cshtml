@@ -1,0 +1,142 @@
+﻿@model Intikonex_web1.Models.Hoja_de_asistencia
+
+@using Intikonex_web1.Models
+@{
+    ViewBag.Title = "Hoja de asistencia - Detalles";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+<div>
+    <h1 style="text-align:center">DETALLES DE LA HOJA DE ASISTENCIA</h1>
+    <hr />
+    <table class="Listado">
+        <tr>
+            <th>
+                <label>Nombre de la empresa</label>
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.empresa.razon_social)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>CIF</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.empresa.cif)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Dirección</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.empresa.direccion)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Persona de contacto</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.trabajador.nombre)
+                @Html.DisplayFor(model => model.trabajador.apellidos)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Cargo</label>
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.trabajador.cargo)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Técnico asignado</label>
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.usuario.nombre)
+                @Html.DisplayFor(model => model.usuario.apellidos)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Fecha de asistencia</label>
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.fecha_asistencia)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Hora de llegada | Hora de Salida</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.hora_inicio)|
+                @Html.DisplayFor(model => model.hora_fin)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Tipo de Contrato</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.contrato.nombre)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Trabajos realizados</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.trabajo_realizado)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+        <tr>
+            <th>
+                <label>Observaciones del cliente</label>
+            </th>
+            <td>
+
+                @Html.DisplayFor(model => model.observaciones_cliente)
+            </td>
+        </tr>
+        <tr style="width:10px; height:10px"><th style=" border-style: hidden "><br /></th><th style=" border-style: hidden "><br /></th></tr>
+    </table>
+</div>
+<table>
+    <tr>
+        <td>
+            <a class="btn-material" style="width:100%" href="/Hoja_de_asistencia/Index">
+                <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+            </a>
+        </td>
+        <td><p></p></td>
+        <td>
+            @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_editar.png"), "", "Edit", new { id = Model.id }, new { @class = "icon", style = "width:50px; height:20%" })
+        </td>
+        <td><p></p></td>
+        <td>
+            @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_eliminar.png"), "", "Delete", new { id = Model.id }, new { @class = "icon", style = "width:50px; height:20%" })
+        </td>
+    </tr>
+</table>

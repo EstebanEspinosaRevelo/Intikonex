@@ -1,0 +1,33 @@
+﻿@model Intikonex_web1.Models.RecoveryViewModel
+@{
+    ViewBag.Title = "Restablecer Contraseña";
+    Layout = "~/Views/Shared/_Layout_login.cshtml";
+}
+
+<div class="box">
+    <div class="box-form" style="left: 0px;">
+        <div class="box-login-tab"></div>
+        <div class="box-login-title">
+            <div class="i i-login"></div>
+            <h4>Recuperar Contraseña</h4>
+        </div>
+        <form action="@Url.Content("~/Acceso/startRecovery")" method="post">
+            <div class="box-login">
+                <br />
+                <div class="fieldset-body" id="login_form" style="margin:10%">
+                    <p class="field">
+                        <label for="user">E-MAIL</label>
+                        @Html.TextBoxFor(d => d.Email, null, new { type = "email", placeholder = "usuario@intikonex.com", name = "User", required = "", autofocus = "", pattern = ".+[iI][nN][Tt][iI][kK][oO][nN][eE][xX][.][cC][oO][mM]" })
+                    </p>
+                    <div class="danger">
+                        @ViewBag.Error
+                    </div>
+                    <div class="alert-success">
+                        @ViewBag.Success
+                    </div>
+                    <input type="submit" value="Recuperar" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

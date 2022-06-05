@@ -1,0 +1,92 @@
+﻿@model Intikonex_web1.Models.trabajador
+@using Intikonex_web1.Models
+
+@{
+    ViewBag.Title = "Trabajadores - Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 style="text-align:center">EDICIÓN DEL TRABAJADOR</h1>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+    <table border="0" class="Listado">
+        <tr>
+            <th style="border-style: inset"><label>Nombre*</label></th>
+            <th style="border-style: inset"><label>Apellidos*</label></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Nombre", style = "width:50%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.EditorFor(model => model.apellidos, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Apellidos", style = "width:50%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <th style="border-style: inset"><label>Cargo</label></th>
+            <th style="border-style: inset"><label>Teléfono</label></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(model => model.cargo, new { htmlAttributes = new { @class = "form-control", placeholder = "Cargo", style = "width:50%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.telefono, new { @type = "phone", placeholder = "123456789", pattern = "[0-9]{9}", title = "El numero de telefono consta de 9 números", style = "width:50%;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+
+        <tr>
+            <th style="border-style: inset"><label>Correo*</label></th>
+            <th style="border-style: inset"><label>Documentacion de Identidad</label></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(model => model.correo, new { @type = "email", placeholder = "correo@dominio.com", required = "", style = "width:50% ;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.EditorFor(model => model.dni_nie_nif, new { htmlAttributes = new { @class = "form-control", placeholder = "B76365789", pattern = "[AaBbCcDdEeFfGgHhJjQqRrSsTtVvWwXxYyZz0-9]{9}", title = "La documentacion de identidad consta de 9 caracteres. Por favor, Introduzcalo correctamente", style = "width:50%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        
+    </table>
+
+    <table class="Listado">
+        <tr>
+            <th style="border-style: inset"><label>Empresa</label></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DropDownList("id_empresa", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <a class="btn-material" style="width:100%" href="/trabajador/Index_user">
+                    <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+                </a>
+            </td>
+            <td>
+                <button class="btn-material" style="width: 100%; border-style: hidden; cursor: pointer; background-color:white" type="submit">
+                    <img class="icon" style="width:50px; height:50%" src="~/Image/Iconos/Acciones/Boton_guardar.png">
+                </button>
+            </td>
+        </tr>
+    </table>
+}

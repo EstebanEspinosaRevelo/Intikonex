@@ -1,0 +1,99 @@
+﻿@model Intikonex_web1.Models.trabajador
+
+@{
+    ViewBag.Title = "Trabajadores - Crear ";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 style="text-align:center">CREACIÓN DE UNA NUEVA EMPRESA</h1>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <br />
+
+    <div style="text-align:center">
+        <div class="form-group">
+            <h4>Nombre*</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Nombre", style = "width:50%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h4>Apellidos*</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.apellidos, new { htmlAttributes = new { @class = "form-control", required = "", placeholder = "Apellidos", style = "width:50%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h4>Cargo</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cargo, new { htmlAttributes = new { @class = "form-control", placeholder = "Cargo", style = "width:50%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.cargo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h4>Teléfono</h4>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.telefono, new { @type = "phone", placeholder = "123456789", pattern = "[0-9]{9}", title = "El numero de telefono consta de 9 números", style = "width:50%;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h4>Correo Electrónico*</h4>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.correo, new { @type = "email", placeholder = "correo@dominio.com", required = "", style = "width:50% ;background-color: cornsilk" })
+                @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h4>Documentación de identidad</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dni_nie_nif, new { htmlAttributes = new { @class = "form-control", placeholder = "B76365789", pattern = "[AaBbCcDdEeFfGgHhJjQqRrSsTtVvWwXxYyZz0-9]{9}", title = "La documentacion de identidad consta de 9 caracteres. Por favor, Introduzcalo correctamente", style = "width:50%;background-color: cornsilk" } })
+                @Html.ValidationMessageFor(model => model.dni_nie_nif, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h4>Empresa</h4>
+            <div class="col-md-10">
+                @Html.DropDownList("id_empresa", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_empresa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+    </div>
+        <table>
+            <tr>
+                <td>
+                    <a class="btn-material" style="width:100%" href="/trabajador/Index">
+                        <img class="icon" style="width:50px; height:50%" src="/Image/Iconos/Acciones/Boton_volver.png">
+                    </a>
+                </td>
+                <td>
+                    <button class="btn-material" style="width: 100%; border-style: hidden; cursor: pointer; background-color:white" type="submit" value="Create">
+                        <img class="icon" style="width:50px; height:50%" src="~/Image/Iconos/Acciones/Boton_Crear.png">
+                    </button>
+                </td>
+            </tr>
+        </table>
+}

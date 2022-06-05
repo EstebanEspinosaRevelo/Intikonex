@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Intikonex_web1.Models.empresa>
+
+@using Intikonex_web1.Models
+@{
+    ViewBag.Title = "Empresas";
+    Layout = "~/Views/Shared/_Layout_Tecnico.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+<h1 style="text-align:center">LISTADO DE EMPRESAS</h1>
+<hr />
+<div style="color:red;">
+    @ViewBag.Error
+</div>
+<table class="Listado">
+    <tr>
+        <th>
+            <label>Empresa</label>
+        </th>
+        <th>
+            <label>CIF</label>
+        </th>
+        <th>
+            <label>Persona de Contacto</label>
+        </th>
+        <th>
+            <label>Tecnico asignado</label>
+        </th>
+        <th>
+            <label>Editar</label>
+        </th>
+        <th>
+            <label>Detalles</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.razon_social)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trabajador.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usuario.nombre)
+            </td>
+            <td>
+                @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_editar.png"), "", "Edit_tecnico", new { id = item.id }, new { @class = "icon" })
+            </td>
+            <td>
+                @Html.ImageActionLink(Url.Content("~/Image/Iconos/Acciones/Boton_detalles.png"), "", "Details_tecnico", new { id = item.id }, new { @class = "icon" })
+            </td>
+        </tr>
+    }
+</table>

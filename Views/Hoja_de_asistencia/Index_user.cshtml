@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Intikonex_web1.Models.Hoja_de_asistencia>
+@using Intikonex_web1.Models
+
+@{
+    ViewBag.Title = "Hoja de Asistencia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+<h1 style="text-align:center">LISTADO DE HOJAS DE ASISTENCIA</h1>
+<hr />
+<div style="color:red;">
+    @ViewBag.Error
+</div>
+<table class="Listado">
+    <tr>
+        <th>
+            <label>Fecha de asistencia</label>
+        </th>
+        <th>
+            <label>Empresa</label>
+        </th>
+        <th>
+            <label>Contrato</label>
+        </th>
+        <th>
+            <label>Persona de Contacto</label>
+        </th>
+        <th>
+            <label>Tecnico asignado</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_asistencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empresa.razon_social)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contrato.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trabajador.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usuario.nombre)
+            </td>
+        </tr>
+    }
+
+</table>

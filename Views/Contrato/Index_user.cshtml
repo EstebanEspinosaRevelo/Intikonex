@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Intikonex_web1.Models.contrato>
+
+
+@using Intikonex_web1.Models
+@{
+    ViewBag.Title = "Contrato";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/General.css" rel="stylesheet" />
+    <script src="~/Scripts/Dashboard.js"></script>
+}
+<h1 style="text-align:center">LISTADO DE CONTRATOS</h1>
+<hr />
+<div style="color:red;">
+    @ViewBag.Error
+</div>
+<table class="Listado">
+    <tr>
+        <th>
+            <label>Nombre</label>
+        </th>
+        <th>
+            <label>Descripción</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripción)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/estilos.css" rel="stylesheet" />
+</head>
+<body id="body">
+    <div class="menu__side" id="menu_side">
+        <div class="icon__menu" id="menu_side">
+            <i class="fas" id="btn_open">
+                <img class="icon" src="~/Image/Iconos/Menu/bxs-dashboard.png" />
+            </i>
+        </div>
+        <div class="name__page">
+            <i class="fab">
+                <img class="icon" src="~/Image/Logo_sin_fondo.png" />
+            </i>
+            <h4 style=" color: black;">INTIKoneX</h4>
+        </div>
+        <div class="options__menu">
+            <a href="/Home/Index_user">
+                <div class="option">
+                    <i class="far" title="Empresas">
+                        <img class="icon" src="~/Image/Iconos/Menu/icon-empresa.png" />
+                    </i>
+                    <h4>Empresas</h4>
+                </div>
+            </a>
+            <a href="/trabajador/Index_user">
+                <div class="option">
+                    <i class="fas" title="Trabajadores">
+                        <img class="icon" src="~/Image/Iconos/Menu/icon-laboral.png" />
+                    </i>
+                    <h4>Trabajadores</h4>
+                </div>
+            </a>
+            <a href="/Hoja_de_asistencia/Index_user">
+                <div class="option">
+                    <i class="far" title="Hoja_de_asistencia">
+                        <img class="icon" src="~/Image/Iconos/Menu/icon-hojadeasistencia.png" />
+                    </i>
+                    <h4>Hoja de Asistencia</h4>
+                </div>
+            </a>
+            <a href="/Contrato/Index_user">
+                <div class="option">
+                    <i class="far" title="Contratos">
+                        <img class="icon" src="~/Image/Iconos/Menu/icon-contrato.png" />
+                    </i>
+                    <h4>Contratos</h4>
+                </div>
+            </a>
+            <a href="/Acceso/LogOut">
+                <div class="option">
+                    <i class="far" title="Desconectarse">
+                        <img class="icon" src="~/Image/Iconos/Menu/icon-desconectarse.png" />
+                    </i>
+                    <h4>Cerrar sesion</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+    <main>
+        @RenderBody()
+    </main>
+    <script src="~/Scripts/script.js"></script>
+</body>
+</html>
