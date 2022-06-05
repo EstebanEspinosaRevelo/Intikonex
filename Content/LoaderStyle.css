@@ -1,0 +1,7 @@
+﻿#loader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: transparent url('../Image/puntos_suspensivos.gif') center no-repeat;
+    z-index: auto;
+}
