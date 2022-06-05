@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout_login.cshtml";
+}
+
+<div class="box">
+    <div class="box-form" style="left: 0px;">
+        <div class="box-login-tab"></div>
+        <div class="box-login-title">
+            <div class="i i-login"></div>
+            <h3>LOGIN</h3>
+        </div>
+        <form action="@Url.Content("~/Acceso/Login")" method="post">
+        <div class="box-login">
+            <div class="fieldset-body" id="login_form">
+                <button onclick="openLoginInfo();" class="b b-form i i-more" style="opacity: 1;"></button>
+                <p class="field">
+                    <label for="user">E-MAIL</label>
+                    <input type="email" name="User" placeholder="usuario@intikonex.com" required="" autofocus=""  title="Solo se permiten cuentas de Intikonex.com" pattern=".+[iI][nN][Tt][iI][kK][oO][nN][eE][xX][.][cC][oO][mM]" />
+                </p>
+                <p class="field">
+                    <label>CONTRASEÑA</label>
+                    <input type="password" name="Pass" placeholder="contraseña" required="" pattern="[A-Za-z0-9#$%&_*.]{5,100}" title="Debe tener mínimo 5 caracteres. Se recomienda utilizar minúsculas, mayúsculas, números y símbolos (#, $, %, &)" />
+                </p>
+                <p class="field">
+                <label class="checkbox">
+                    <input type="checkbox" value="TRUE"/> Mantenerme conectado
+                </label>
+                    </p>
+                <div class="danger">
+                    @ViewBag.Error
+                </div>
+                <div class="alert-success">
+                    @ViewBag.Success
+                </div>
+                <div class="form-group"></div>
+                <input type="submit" value="Iniciar sesión" class="btn btn-success" />
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="box-info">
+        <button onclick="closeLoginInfo();" class="b b-info i i-left">
+        </button>
+        <br>
+        <h2>¿Necesitas ayuda?</h2>
+        <div class="line-wh"></div>
+        <button class="b-support">@Html.ActionLink("¿Olvidaste tu contraseña?", "StartRecovery")</button>
+        <a href="mailto:soporte@intikonex.com"><input type="button" class="b-support" value="Contactar con Soporte" /></a>
+</div>
+</div>
